@@ -1,2 +1,2 @@
 # tidywoe
-A tidy way to put WoE version of categorical variables in data.frame.
+A tidy way to put WoE version of categorical variables into data.frame.
