@@ -44,6 +44,7 @@ tea %>%
   head
 ```
 
+
 ```{r, warning=FALSE, echo = FALSE, eval = TRUE, message=FALSE}
 library(dplyr)
 library(tidywoe)
@@ -68,6 +69,7 @@ tea %>%
   woe_dictionary(breakfast) %>%
   head
 ```
+
 
 ```{r, message=FALSE, warning=FALSE, echo = FALSE, eval=TRUE}
 tea %>%
@@ -98,6 +100,7 @@ tea %>%
   add_woe(breakfast, .woe_dictionary = tea_woe_dic_tweaked) %>%
   head
 ```
+
 
 ```{r, warning=FALSE, message=FALSE, echo = FALSE, eval=TRUE}
 # biuld a initial dictionary

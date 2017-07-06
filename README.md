@@ -39,6 +39,7 @@ tea %>%
 ```
 
 
+
 breakfast       how       where         price                 how_woe    where_woe    price_woe
 --------------  --------  ------------  ----------------  -----------  -----------  -----------
 breakfast       tea bag   chain store   p_unknown          -0.0377403   -0.0451204   -0.2564295
@@ -59,6 +60,7 @@ tea %>%
   woe_dictionary(breakfast) %>%
   head
 ```
+
 
 
 variable   explanatory             n_tot   n_breakfast   n_Not.breakfast   p_breakfast   p_Not.breakfast          woe
@@ -92,6 +94,7 @@ tea %>%
   add_woe(breakfast, .woe_dictionary = tea_woe_dic_tweaked) %>%
   head
 ```
+
 
 
 breakfast       how       where         price                 how_woe    where_woe    price_woe
