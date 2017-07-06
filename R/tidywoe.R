@@ -32,7 +32,8 @@ woe_table <- function(response, explanatory) {
     tidyr::gather(summary, value, n, p) %>%
     tidyr::unite(summary_response, summary, response) %>%
     tidyr::spread(summary_response, value, fill = 0) %>%
-    dplyr::mutate(woe = eval(woe_expr))
+    dplyr::mutate(woe = eval(woe_expr),
+                  explanatory = explanatory %>% as.character)
   return(counts)
 }
 
@@ -92,7 +93,7 @@ add_woe <- function(.data, .response, ..., .woe_dictionary = NULL) {
     dplyr::group_by(variable) %>%
     tidyr::nest(.key = "woe_table") %>%
     dplyr::mutate(woe_table = purrr::map2(woe_table, variable, ~ purrr::set_names(.x, c(.y, paste0(.y, "_woe")))) %>% purrr::set_names(variable)) %$%
-    purrr::map2(woe_table, variable, ~ dplyr::left_join(.data %>% dplyr::select(!!.y), .x, by = .y) %>% dplyr::select(ends_with("woe"))) %>%
+    purrr::map2(woe_table, variable, ~ dplyr::left_join(.data %>% dplyr::select(!!.y) %>% mutate_all(as.character), .x, by = .y) %>% dplyr::select(ends_with("woe"))) %>%
     dplyr::bind_cols(.data, .) %>%
     tibble::as_tibble()
 }
