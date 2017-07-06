@@ -15,12 +15,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Currently is available only on Github. To install it, run:
 
-```{r}
+```{r, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("athospd/tidywoe")
 ```
 
-# using tidywoe 
+# Using tidywoe 
 
 There is tow functions that matter:
 
@@ -31,7 +31,8 @@ There is tow functions that matter:
 
 To simply add woe version of your variables from your sample data, just run the follow:
 
-```{r, warning=FALSE, eval = TRUE, message=FALSE}
+```{r, warning=FALSE, eval = FALSE, message=FALSE, echo = TRUE}
+library(dplyr)
 library(tidywoe)
 
 # install.packages("FactoMineR")
@@ -43,14 +44,37 @@ tea %>%
   head
 ```
 
+```{r, warning=FALSE, echo = FALSE, eval = TRUE, message=FALSE}
+library(dplyr)
+library(tidywoe)
+
+# install.packages("FactoMineR")
+data(tea, package = "FactoMineR")
+
+tea %>%
+  select(breakfast, how, where, price) %>% 
+  add_woe(breakfast) %>%
+  head %>%
+  knitr::kable()
+```
+
 ## woe_dictionary()
 
 The function `add_woe()` uses a dictionary to map the categories with the respective woe value of each explanatory variable.
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, echo = TRUE, eval=FALSE}
 tea %>%
   select(breakfast, how, where, price) %>% 
-  woe_dictionary(breakfast)
+  woe_dictionary(breakfast) %>%
+  head
+```
+
+```{r, message=FALSE, warning=FALSE, echo = FALSE, eval=TRUE}
+tea %>%
+  select(breakfast, how, where, price) %>% 
+  woe_dictionary(breakfast) %>%
+  head %>%
+  knitr::kable()
 ```
 
 ## Using a custom woe_dictionary
@@ -59,7 +83,7 @@ One might want to tweak some woe values to fix the order of the effects of a giv
 
 The easy way to do this is to make a previous dictionary with the `woe_dictionary()` as the start point and tweak it to achieve the fixes needed. See below:
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo = TRUE, eval=FALSE}
 # biuld a initial dictionary
 tea_woe_dic <- tea %>%
   select(breakfast, how, where, price) %>% 
@@ -71,6 +95,23 @@ tea_woe_dic_tweaked <- tea_woe_dic %>% mutate(woe = if_else(variable == "price" 
 # pass it as an argument of add_woe()
 tea %>%
   select(breakfast, how, where, price) %>% 
-  add_woe(breakfast, .woe_dictionary = tea_woe_dic_tweaked)
+  add_woe(breakfast, .woe_dictionary = tea_woe_dic_tweaked) %>%
+  head
 ```
 
+```{r, warning=FALSE, message=FALSE, echo = FALSE, eval=TRUE}
+# biuld a initial dictionary
+tea_woe_dic <- tea %>%
+  select(breakfast, how, where, price) %>% 
+  woe_dictionary(breakfast)
+
+# tweak it a little bit
+tea_woe_dic_tweaked <- tea_woe_dic %>% mutate(woe = if_else(variable == "price" & explanatory == "p_unknown", 0, woe))
+
+# pass it as an argument of add_woe()
+tea %>%
+  select(breakfast, how, where, price) %>% 
+  add_woe(breakfast, .woe_dictionary = tea_woe_dic_tweaked) %>%
+  head %>%
+  knitr::kable()
+```
