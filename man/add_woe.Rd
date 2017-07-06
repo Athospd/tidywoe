@@ -12,6 +12,8 @@ add_woe(.data, .response, ..., .woe_dictionary = NULL)
 \item{.response}{unquoted name of the response variable.}
 
 \item{...}{unquoted names of explanatory variables, passed as you would pass variables to \code{dplyr::select()}. This means that you can use all the helpers like \code{starts_with()} and \code{matches()}.}
+
+\item{.woe_dictionary}{a tbl. If NULL the function will build a dictionary for those variables passed to \code{...}. You can pass a custom dictionary too, see \link{\code{woe_dictionary()}} for details.}
 }
 \value{
 a tibble with the original columns of .data plus the woe columns wanted.

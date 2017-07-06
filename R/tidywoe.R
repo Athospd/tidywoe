@@ -71,7 +71,7 @@ woe_dictionary <- function(.data, .response, ...) {
 #' @param .data A tbl. The data.frame to plug the new woe version columns.
 #' @param .response unquoted name of the response variable.
 #' @param ... unquoted names of explanatory variables, passed as you would pass variables to \code{dplyr::select()}. This means that you can use all the helpers like \code{starts_with()} and \code{matches()}.
-#' @param .woe_dictionary a tbl. If NULL the function will build a dictionary for those variables passed to \code{...}. You can pass a custom dictionary too, see \link{\code{woe_dictionary()} for details.
+#' @param .woe_dictionary a tbl. If NULL the function will build a dictionary for those variables passed to \code{...}. You can pass a custom dictionary too, see \link{\code{woe_dictionary()}} for details.
 #'
 #' @return a tibble with the original columns of .data plus the woe columns wanted.
 #'
