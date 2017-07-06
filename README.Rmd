@@ -56,7 +56,7 @@ tea %>%
   select(breakfast, how, where, price) %>% 
   add_woe(breakfast) %>%
   head %>%
-  knitr::kable()
+  knitr::kable(format = "markdown")
 ```
 
 ## woe_dictionary()
@@ -76,7 +76,7 @@ tea %>%
   select(breakfast, how, where, price) %>% 
   woe_dictionary(breakfast) %>%
   head %>%
-  knitr::kable()
+  knitr::kable(format = "markdown")
 ```
 
 ## Using a custom woe_dictionary
@@ -116,5 +116,5 @@ tea %>%
   select(breakfast, how, where, price) %>% 
   add_woe(breakfast, .woe_dictionary = tea_woe_dic_tweaked) %>%
   head %>%
-  knitr::kable()
+  knitr::kable(format = "markdown")
 ```

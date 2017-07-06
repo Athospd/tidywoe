@@ -40,14 +40,14 @@ tea %>%
 
 
 
-breakfast       how       where         price                 how_woe    where_woe    price_woe
---------------  --------  ------------  ----------------  -----------  -----------  -----------
-breakfast       tea bag   chain store   p_unknown          -0.0377403   -0.0451204   -0.2564295
-breakfast       tea bag   chain store   p_variable         -0.0377403   -0.0451204    0.1872882
-Not.breakfast   tea bag   chain store   p_variable         -0.0377403   -0.0451204    0.1872882
-Not.breakfast   tea bag   chain store   p_variable         -0.0377403   -0.0451204    0.1872882
-breakfast       tea bag   chain store   p_variable         -0.0377403   -0.0451204    0.1872882
-Not.breakfast   tea bag   chain store   p_private label    -0.0377403   -0.0451204   -0.0152675
+|breakfast     |how     |where       |price           |    how_woe|  where_woe|  price_woe|
+|:-------------|:-------|:-----------|:---------------|----------:|----------:|----------:|
+|breakfast     |tea bag |chain store |p_unknown       | -0.0377403| -0.0451204| -0.2564295|
+|breakfast     |tea bag |chain store |p_variable      | -0.0377403| -0.0451204|  0.1872882|
+|Not.breakfast |tea bag |chain store |p_variable      | -0.0377403| -0.0451204|  0.1872882|
+|Not.breakfast |tea bag |chain store |p_variable      | -0.0377403| -0.0451204|  0.1872882|
+|breakfast     |tea bag |chain store |p_variable      | -0.0377403| -0.0451204|  0.1872882|
+|Not.breakfast |tea bag |chain store |p_private label | -0.0377403| -0.0451204| -0.0152675|
 
 ## woe_dictionary()
 
@@ -63,14 +63,14 @@ tea %>%
 
 
 
-variable   explanatory             n_tot   n_breakfast   n_Not.breakfast   p_breakfast   p_Not.breakfast          woe
----------  ---------------------  ------  ------------  ----------------  ------------  ----------------  -----------
-how        tea bag                   170            80                90     0.5555556         0.5769231   -0.0377403
-how        tea bag+unpackaged         94            50                44     0.3472222         0.2820513    0.2078761
-how        unpackaged                 36            14                22     0.0972222         0.1410256   -0.3719424
-where      chain store               192            90               102     0.6250000         0.6538462   -0.0451204
-where      chain store+tea shop       78            42                36     0.2916667         0.2307692    0.2341934
-where      tea shop                   30            12                18     0.0833333         0.1153846   -0.3254224
+|variable |explanatory          | n_tot| n_breakfast| n_Not.breakfast| p_breakfast| p_Not.breakfast|        woe|
+|:--------|:--------------------|-----:|-----------:|---------------:|-----------:|---------------:|----------:|
+|how      |tea bag              |   170|          80|              90|   0.5555556|       0.5769231| -0.0377403|
+|how      |tea bag+unpackaged   |    94|          50|              44|   0.3472222|       0.2820513|  0.2078761|
+|how      |unpackaged           |    36|          14|              22|   0.0972222|       0.1410256| -0.3719424|
+|where    |chain store          |   192|          90|             102|   0.6250000|       0.6538462| -0.0451204|
+|where    |chain store+tea shop |    78|          42|              36|   0.2916667|       0.2307692|  0.2341934|
+|where    |tea shop             |    30|          12|              18|   0.0833333|       0.1153846| -0.3254224|
 
 ## Using a custom woe_dictionary
 
@@ -97,11 +97,11 @@ tea %>%
 
 
 
-breakfast       how       where         price                 how_woe    where_woe    price_woe
---------------  --------  ------------  ----------------  -----------  -----------  -----------
-breakfast       tea bag   chain store   p_unknown          -0.0377403   -0.0451204    0.0000000
-breakfast       tea bag   chain store   p_variable         -0.0377403   -0.0451204    0.1872882
-Not.breakfast   tea bag   chain store   p_variable         -0.0377403   -0.0451204    0.1872882
-Not.breakfast   tea bag   chain store   p_variable         -0.0377403   -0.0451204    0.1872882
-breakfast       tea bag   chain store   p_variable         -0.0377403   -0.0451204    0.1872882
-Not.breakfast   tea bag   chain store   p_private label    -0.0377403   -0.0451204   -0.0152675
+|breakfast     |how     |where       |price           |    how_woe|  where_woe|  price_woe|
+|:-------------|:-------|:-----------|:---------------|----------:|----------:|----------:|
+|breakfast     |tea bag |chain store |p_unknown       | -0.0377403| -0.0451204|  0.0000000|
+|breakfast     |tea bag |chain store |p_variable      | -0.0377403| -0.0451204|  0.1872882|
+|Not.breakfast |tea bag |chain store |p_variable      | -0.0377403| -0.0451204|  0.1872882|
+|Not.breakfast |tea bag |chain store |p_variable      | -0.0377403| -0.0451204|  0.1872882|
+|breakfast     |tea bag |chain store |p_variable      | -0.0377403| -0.0451204|  0.1872882|
+|Not.breakfast |tea bag |chain store |p_private label | -0.0377403| -0.0451204| -0.0152675|
