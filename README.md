@@ -1,4 +1,4 @@
-# tidywoe <img src="hex.png" align="right" />
+# tidywoe <img src="tidywoe_hex.png" align="right" />
 
 Package to put WoE versions of your variables in a tidy way.
 
