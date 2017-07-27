@@ -1,5 +1,6 @@
-# tidywoe
-Athos Petri Damiani  
+# tidywoe <img src="hex.png" align="right" />
+
+Package to put WoE versions of your variables in a tidy way.
 
 
 
