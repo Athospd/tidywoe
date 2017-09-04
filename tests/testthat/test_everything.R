@@ -49,8 +49,9 @@ test_that("woe_dictionary returns a proper tibble", {
 })
 
 test_that("woe_dictionary accepts numeric, logical and character explanatory variables", {
-  expect_equal(dim(woe_dictionary(mutate(df, x3 = rep(c(TRUE, FALSE), 10),
-                                         x4 = rep(c(20, 30), 10)), y)), c(9, 8))
+  expect_equal(dim(woe_dictionary(mutate(df,
+                                         x3 = rep(c(TRUE, FALSE), 10),
+                                         x4 = rep(c(20, 30), 10)), y)), c(10, 8))
 })
 
 test_that("woe_dictionary ruturns no messages nor warnings nor errors", {
@@ -80,5 +81,12 @@ test_that("add_woe ruturns no messages nor warnings nor errors", {
 test_that("add_woe accepts numeric, logical and character explanatory variables", {
   expect_equal(add_woe(df %>% mutate(x3 = rep(c(TRUE, FALSE), 10),
                                      x4 = rep(c(20, 30), 10)), y) %>% dim, c(20, 9))
+})
+
+test_that("add_woe returns woe only for those variables that exists in both data and dictionary", {
+  expect_equal(names(add_woe(df, y, x2, .woe_dictionary = woe_dictionary(df, y, x1))), c("x1", "x2", "y"))
+  expect_equal(names(add_woe(df, y, x1, .woe_dictionary = woe_dictionary(df, y, x1))), c("x1", "x2", "y", "x1_woe"))
+  expect_equal(names(add_woe(df, y, .woe_dictionary = woe_dictionary(df, y, x1))), c("x1", "x2", "y", "x1_woe"))
+  expect_equal(names(add_woe(df, y, x1, x2, .woe_dictionary = woe_dictionary(df, y, x1))), c("x1", "x2", "y", "x1_woe"))
 })
 

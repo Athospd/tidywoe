@@ -84,11 +84,24 @@ woe_dictionary <- function(.data, .response, ...) {
 #'
 #' @export
 add_woe <- function(.data, .response, ..., .woe_dictionary = NULL) {
+  if(missing(.data)) stop('argument ".data" is missing, with no default')
+  if(missing(.response)) stop('argument ".response" is missing, with no default')
+
   .response <- dplyr::enquo(.response)
 
   if(is.null(.woe_dictionary)) .woe_dictionary <- .data %>% woe_dictionary(!!.response, ...)
 
+  if(missing(...)) {
+    dots_vars <- names(.data)
+  } else {
+    dots_vars <- lazyeval::dots_capture(...) %>%
+      unlist %>%
+      as.character %>%
+      stringi::stri_replace_all_fixed("~", "")
+  }
+
   .woe_dictionary %>%
+    dplyr::filter(variable %in% dots_vars) %>%
     dplyr::select(variable, explanatory, woe) %>%
     dplyr::group_by(variable) %>%
     tidyr::nest(.key = "woe_table") %>%
@@ -97,3 +110,4 @@ add_woe <- function(.data, .response, ..., .woe_dictionary = NULL) {
     dplyr::bind_cols(.data, .) %>%
     tibble::as_tibble()
 }
+
